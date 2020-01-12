@@ -7,9 +7,9 @@ interface MyProps {
     showModal: any
 }
 
-const Reward = ({reward, showModal} : MyProps) => {
+const RewardCard = ({reward, showModal} : MyProps) => {
         return (
-            <TouchableOpacity onPress={() => showModal(reward.rewardId)}>
+            <TouchableOpacity onPress={() => showModal(reward)}>
                 <View style={{marginRight: 15}}>
                     <ImageBackground source={{ uri: reward.imgUri }} style={styles.card}>
                         <Text style={{color: "#fff"}}>Hello World</Text>
@@ -36,4 +36,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Reward;
+export default RewardCard;

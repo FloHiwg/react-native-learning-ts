@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
-import Reward from '../Reward';
+import RewardCard from '../RewardCard';
 import RewardModel from 'src/models/RewardModel';
 
 const RewardCarousel = ({ 
@@ -13,7 +13,7 @@ const RewardCarousel = ({
             <Text style={styles.heading}>{category}</Text>
             <ScrollView horizontal={true}>
             {rewards.map((reward: RewardModel, index: number) => (
-                <Reward reward={reward} showModal={show}></Reward>
+                <RewardCard reward={reward} showModal={show} key={`${index}_${reward.rewardId}`}></RewardCard>
             ))}
             </ScrollView>
         </View>
