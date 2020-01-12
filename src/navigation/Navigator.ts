@@ -10,17 +10,14 @@ import { createSwitchNavigator } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
 const HomeStack = createStackNavigator(
-    { HomeScreen, DetailScreen, OptionsScreen },
-    { initialRouteName: "DetailScreen" }
+    { HomeScreen, DetailScreen, OptionsScreen},
+    { initialRouteName: "HomeScreen" }
   );
 
 const MainNavigator = Platform.select({
     ios: createBottomTabNavigator({ HomeStack, SettingsScreen }),
     android: createDrawerNavigator({ HomeStack, SettingsScreen })
   });
-  
-
-const MainTabs = createBottomTabNavigator({ HomeStack, SettingsScreen });
 
 
 const RootSwitch = createSwitchNavigator(

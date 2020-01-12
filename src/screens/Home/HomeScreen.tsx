@@ -1,12 +1,13 @@
-import styles from './styles';
+//import styles from './styles';
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, TouchableHighlight, StyleSheet } from 'react-native';
 
 class HomeScreen extends Component {
+  
   render() {
     return (
-      <View style={styles.container}>
-        <Text>This is the HomeScreen.</Text>
+      <View>
+        <Text> TEST HOME </Text>
       </View>
     );
   }
