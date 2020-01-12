@@ -1,6 +1,6 @@
 import styles from './styles';
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView } from 'react-native';
 import RewardCarousel from '../../components/RewardCarousel';
 import RewardDetail from '../../components/RewardDetail';
 import RewardModel from 'src/models/RewardModel';
@@ -49,10 +49,15 @@ class RewardsScreen extends Component {
   
   render() {
     return (
-      <View>
+      <ScrollView>
         <RewardCarousel category="Health" show={this.showModal} rewards={this.rewards}></RewardCarousel>
+        <RewardCarousel category="Fashion" show={this.showModal} rewards={this.rewards}></RewardCarousel>
+        <RewardCarousel category="Food" show={this.showModal} rewards={this.rewards}></RewardCarousel>
+        <RewardCarousel category="Events" show={this.showModal} rewards={this.rewards}></RewardCarousel>
+        <RewardCarousel category="Fun" show={this.showModal} rewards={this.rewards}></RewardCarousel>
+        <RewardCarousel category="IDK" show={this.showModal} rewards={this.rewards}></RewardCarousel>
         <RewardDetail rewardId={this.state.rewardId} show={this.state.show} handleClose={this.hideModal}></RewardDetail>
-      </View>
+      </ScrollView>
     );
   }
 }

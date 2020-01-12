@@ -11,8 +11,13 @@ import { createSwitchNavigator } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
 const HomeStack = createStackNavigator(
-    { RewardsScreen, HomeScreen, DetailScreen, OptionsScreen},
-    { initialRouteName: "RewardsScreen" }
+    { 
+      Rewards: {
+        screen: RewardsScreen,
+        path: 'rewards'
+      },
+      initialRouteName: RewardsScreen
+    }
   );
 
 const MainNavigator = Platform.select({
