@@ -1,12 +1,27 @@
 import styles from './styles';
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, AsyncStorage, ActivityIndicator, StatusBar } from 'react-native';
+import { NavigationScreenProp, NavigationState, NavigationParams } from 'react-navigation';
 
-class LoadingScreen extends Component {
+interface Props {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
+
+class LoadingScreen extends Component<Props, object> {
+  componentDidMount() {
+    this._bootstrapAsync();
+  }
+
+  _bootstrapAsync = async () => {
+    const userToken = await AsyncStorage.getItem('userToken');
+    this.props.navigation.navigate(userToken ? 'App' : 'Auth');
+  };
+  
   render() {
     return (
       <View style={styles.container}>
-        <Text>This is the LoadingScreen.</Text>
+        <ActivityIndicator />
+        <StatusBar barStyle="default" />
       </View>
     );
   }

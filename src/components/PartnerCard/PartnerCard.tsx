@@ -20,7 +20,7 @@ const PartnerCard = ({partner} : MyProps) => {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 20
+        padding: 15
     },
     card: {
         backgroundColor: "#fff",
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         shadowRadius: 4.65,
 
         elevation: 6,
-        padding: 10,
+        padding: 15,
         textAlign: 'center'
     },
     name: {

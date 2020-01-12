@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import { Alert, Button, TextInput, View, StyleSheet } from 'react-native';
+import { Alert, Button, TextInput, View, StyleSheet, AsyncStorage } from 'react-native';
+import { NavigationScreenProp, NavigationState, NavigationParams } from 'react-navigation';
 
-class LoginScreen extends Component {
+interface Props {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
+
+class LoginScreen extends Component<Props, object> {
   state = {
     username: '',
     password: ''
@@ -18,11 +23,18 @@ class LoginScreen extends Component {
 
   onLogin() {
     const { username, password } = this.state;
-
     Alert.alert('Credentials', `${username} + ${password}`);
+    this._signInAsync;
   }
 
+
+  _signInAsync = async () => {
+    await AsyncStorage.setItem('userToken', 'abc');
+    this.props.navigation.navigate('App');
+  };
+
   render() {
+    const {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
         <TextInput
@@ -41,7 +53,7 @@ class LoginScreen extends Component {
         
         <Button
           title={'Login'}
-          onPress={this.onLogin.bind(this)}
+          onPress={() => navigate('App')}
         />
       </View>
     );

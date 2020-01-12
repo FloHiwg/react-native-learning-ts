@@ -31,6 +31,17 @@ const AddStack = createStackNavigator(
   }
 );
 
+const ProfileStack = createStackNavigator(
+  { 
+    Profile: {
+      screen: ProfileScreen,
+      path: 'profile'
+    },
+    initialRouteName: ProfileScreen
+  }
+);
+
+
 const MainNavigator = Platform.select({
     ios: createBottomTabNavigator(
       {
@@ -45,7 +56,7 @@ const MainNavigator = Platform.select({
           },
         },
         Profile: {
-          screen: ProfileScreen,
+          screen: ProfileStack,
           navigationOptions: {
             tabBarLabel:"Profile",
             tabBarIcon: ({ tintColor }) => (
@@ -70,10 +81,18 @@ const MainNavigator = Platform.select({
     android: createDrawerNavigator({ HomeStack, AddStack, ProfileScreen })
   });
 
+  const LoginStack = createStackNavigator({ LoginScreen });
+  const AuthStack = createSwitchNavigator({ LoginStack });
 
 const RootSwitch = createSwitchNavigator(
-    { LoadingScreen, MainNavigator },
-    { initialRouteName: "MainNavigator" }
+    {
+      AuthLoading: LoadingScreen,
+      App: MainNavigator,
+      Auth: AuthStack,
+    },
+    {
+      initialRouteName: 'AuthLoading',
+    }
   );
 
 export default RootSwitch;
