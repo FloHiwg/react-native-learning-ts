@@ -1,13 +1,10 @@
 import React from "react";
 import { Platform } from "react-native";
-import DetailScreen from '../screens/Detail';
-import HomeScreen from '../screens/Home';
 import LoadingScreen from '../screens/Loading';
 import LoginScreen from '../screens/Login';
 import AddPartnerScreen from '../screens/AddPartner';
-import OptionsScreen from '../screens/Options';
-import SettingsScreen from '../screens/Settings';
 import RewardsScreen from '../screens/Rewards';
+import ProfileScreen from "../screens/Profile";
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createSwitchNavigator } from 'react-navigation';
@@ -47,12 +44,12 @@ const MainNavigator = Platform.select({
             )
           },
         },
-        Settings: {
-          screen: SettingsScreen,
+        Profile: {
+          screen: ProfileScreen,
           navigationOptions: {
-            tabBarLabel:"Settings Page",
+            tabBarLabel:"Profile",
             tabBarIcon: ({ tintColor }) => (
-              <Icon name="users" size={20} color="#000" />
+              <Icon name="user" size={20} color="#000" />
             )
           }
         },
@@ -67,10 +64,10 @@ const MainNavigator = Platform.select({
         },
       },
       {
-        order: ['Rewards', "AddPartner", 'Settings']
+        order: ['Rewards', "AddPartner", 'Profile']
       }
     ),
-    android: createDrawerNavigator({ HomeStack, SettingsScreen })
+    android: createDrawerNavigator({ HomeStack, AddStack, ProfileScreen })
   });
 
 

@@ -1,13 +1,35 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
+import PartnerModel from '../../models/PartnerModel';
+import PartnerCard from '../../components/PartnerCard';
 
-class RewardsScreen extends Component {
+class AddPartnerScreen extends Component { 
+    partners: PartnerModel[] = [
+        {
+            partnerId: 0,
+            name: "Bahn",
+            logoUri: ""
+        },
+        {
+            partnerId: 1,
+            name: "BioCompany",
+            logoUri: ""
+        },
+        {
+            partnerId: 2,
+            name: "IDK",
+            logoUri: ""
+        }
+    ]
     render() {
         return (
-            <View>
-                <Text>Hello</Text>
-            </View>
-    )}
+            <ScrollView>
+            {this.partners.map((partner: PartnerModel, index: number) => (
+                <PartnerCard partner={partner} key={`${index}_${partner.partnerId}`}></PartnerCard>
+            ))}
+            </ScrollView>
+        )
+    }
 }
 
-export default RewardsScreen;
+export default AddPartnerScreen;
